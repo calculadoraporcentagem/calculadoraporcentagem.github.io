@@ -3,7 +3,7 @@ name: Deploy Hugo site to GitHub Pages
 on:
   push:
     branches:
-      - main          # trigger saat push ke branch main
+      - master        # trigger saat push ke branch master
   workflow_dispatch:  # bisa dijalankan manual dari tab Actions
 
 # Izin untuk menulis ke GitHub Pages
