@@ -1,0 +1,5 @@
+{{ with .Params.faq }}
+<section class="faq"><h2>Perguntas frequentes</h2>
+{{ range . }}<details><summary>{{ .q }}</summary><p>{{ .a }}</p></details>{{ end }}
+</section>
+{{ end }}

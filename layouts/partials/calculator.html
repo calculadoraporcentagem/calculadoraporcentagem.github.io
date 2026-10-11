@@ -1,0 +1,14 @@
+{{ $c := .c }}
+<form class="calc" data-calc="{{ $c.id }}" id="calc-{{ $c.id }}" novalidate{{ if .hide }} hidden{{ end }}>
+<p class="calc-t">{{ $c.menu }}</p>
+<div class="fields">
+{{ range $i, $f := $c.fields }}<label>{{ $f }}<input type="text" inputmode="decimal" autocomplete="off" name="v{{ $i }}" placeholder="0"></label>{{ end }}
+</div>
+<output class="res" aria-live="polite">Preencha os campos para ver o resultado.</output>
+<div class="acts">
+<button type="button" data-act="ex" data-ex="{{ delimit $c.ex "|" }}">Usar exemplo</button>
+<button type="button" data-act="copy" disabled>Copiar resultado</button>
+<button type="button" data-act="reset">Limpar</button>
+</div>
+<details class="steps"><summary>Ver passo a passo</summary><ol></ol></details>
+</form>

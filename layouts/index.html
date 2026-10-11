@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section class="hero"><h1>{{ .Title }}</h1><p class="lead">{{ .Description }}</p></section>
+<div class="chips">
+{{ range $i, $c := hugo.Data.calculators }}<button type="button" data-show="{{ $c.id }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ $c.menu }}</button>{{ end }}
+</div>
+<div class="calcbox">
+{{ range $i, $c := hugo.Data.calculators }}{{ partial "calculator.html" (dict "c" $c "hide" (gt $i 0)) }}{{ end }}
+</div>
+<noscript><style>.calc[hidden]{display:block}</style></noscript>
+{{ partial "ad.html" "a" }}
+<article class="prose">{{ .Content }}</article>
+{{ partial "ad.html" "b" }}
+{{ partial "faq.html" . }}
+<section><h2>Todas as calculadoras</h2>{{ partial "cards.html" (site.GetPage "/calculadoras").Pages.ByWeight }}</section>
+{{ end }}

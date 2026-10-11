@@ -1,0 +1,6 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+<h1>{{ .Title }}</h1>
+<article class="prose">{{ .Content }}</article>
+<p class="upd">Atualizado em {{ .Lastmod.Format "02/01/2006" }}</p>
+{{ end }}

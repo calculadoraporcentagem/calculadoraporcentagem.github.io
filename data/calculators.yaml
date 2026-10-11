@@ -1,0 +1,157 @@
+[
+ {
+  "id": "pct-of",
+  "slug": "porcentagem-de-um-numero",
+  "menu": "Porcentagem de um número",
+  "title": "Calculadora: quanto é X% de Y?",
+  "short": "Descubra quanto é uma porcentagem de qualquer número. Exemplo: 20% de 150 é 30.",
+  "fields": [
+   "Porcentagem (%)",
+   "Número"
+  ],
+  "formula": "resultado = (porcentagem ÷ 100) × número",
+  "example": "20% de 150 = 0,20 × 150 = 30.",
+  "ex": [
+   "20",
+   "150"
+  ]
+ },
+ {
+  "id": "what-pct",
+  "slug": "quanto-por-cento-representa",
+  "menu": "X é quantos % de Y",
+  "title": "Calculadora: X é quantos % de Y?",
+  "short": "Calcule que porcentagem um valor representa de outro. Exemplo: 30 é 25% de 120.",
+  "fields": [
+   "Parte",
+   "Total"
+  ],
+  "formula": "porcentagem = (parte ÷ total) × 100",
+  "example": "50 maçãs em 1.250: 50 ÷ 1.250 = 0,04; × 100 = 4%.",
+  "ex": [
+   "30",
+   "120"
+  ]
+ },
+ {
+  "id": "increase",
+  "slug": "aumento-percentual",
+  "menu": "Aumento percentual",
+  "title": "Calculadora de aumento percentual",
+  "short": "Some uma porcentagem a um valor e veja o novo total. Exemplo: R$ 200 + 15% = R$ 230.",
+  "fields": [
+   "Valor inicial",
+   "Aumento (%)"
+  ],
+  "formula": "valor final = valor inicial × (1 + porcentagem ÷ 100)",
+  "example": "R$ 200 com aumento de 15% = 200 × 1,15 = R$ 230.",
+  "ex": [
+   "200",
+   "15"
+  ]
+ },
+ {
+  "id": "discount",
+  "slug": "desconto-percentual",
+  "menu": "Desconto percentual",
+  "title": "Calculadora de desconto percentual",
+  "short": "Calcule o preço final com desconto e quanto você economiza. Exemplo: R$ 200 com 15% off = R$ 170.",
+  "fields": [
+   "Preço original",
+   "Desconto (%)"
+  ],
+  "formula": "preço final = preço original × (1 − desconto ÷ 100)",
+  "example": "R$ 200 com 15% de desconto = 200 × 0,85 = R$ 170.",
+  "ex": [
+   "200",
+   "15"
+  ]
+ },
+ {
+  "id": "change",
+  "slug": "variacao-percentual",
+  "menu": "Variação percentual",
+  "title": "Calculadora de variação percentual",
+  "short": "Veja quanto um valor subiu ou caiu em porcentagem. Exemplo: de 80 para 100 é +25%.",
+  "fields": [
+   "Valor inicial",
+   "Valor final"
+  ],
+  "formula": "variação = (valor final − valor inicial) ÷ valor inicial × 100",
+  "example": "De 80 para 100: (100 − 80) ÷ 80 × 100 = 25%.",
+  "ex": [
+   "80",
+   "100"
+  ]
+ },
+ {
+  "id": "total",
+  "slug": "valor-total-a-partir-da-porcentagem",
+  "menu": "Valor total (X é Y% de quanto)",
+  "title": "Calculadora: X é Y% de quanto?",
+  "short": "Descubra o valor total quando você conhece uma parte e a porcentagem. Exemplo: 42 é 7% de 600.",
+  "fields": [
+   "Valor parcial",
+   "Porcentagem (%)"
+  ],
+  "formula": "total = valor parcial ÷ porcentagem × 100",
+  "example": "42 kg correspondem a 7%: 42 ÷ 7 × 100 = 600 kg.",
+  "ex": [
+   "42",
+   "7"
+  ]
+ },
+ {
+  "id": "pct-of-pct",
+  "slug": "porcentagem-de-porcentagem",
+  "menu": "Porcentagem de porcentagem",
+  "title": "Calculadora de porcentagem de porcentagem",
+  "short": "Calcule uma porcentagem de outra porcentagem. Exemplo: 50% de 40% é 20%.",
+  "fields": [
+   "Primeira porcentagem (%)",
+   "Segunda porcentagem (%)"
+  ],
+  "formula": "resultado = (p1 ÷ 100) × (p2 ÷ 100) × 100",
+  "example": "50% de 40% = 0,50 × 0,40 = 0,20 = 20%.",
+  "ex": [
+   "50",
+   "40"
+  ]
+ },
+ {
+  "id": "margin",
+  "slug": "margem-de-lucro-e-markup",
+  "menu": "Margem de lucro e markup",
+  "title": "Calculadora de margem de lucro e markup",
+  "short": "Calcule lucro, margem e markup a partir do custo e do preço de venda.",
+  "fields": [
+   "Custo",
+   "Preço de venda"
+  ],
+  "formula": "margem = (preço − custo) ÷ preço × 100; markup = (preço − custo) ÷ custo × 100",
+  "example": "Custo R$ 60 e preço R$ 100: lucro R$ 40, margem 40% e markup 66,67%.",
+  "ex": [
+   "60",
+   "100"
+  ]
+ },
+ {
+  "id": "rule3",
+  "slug": "regra-de-tres",
+  "menu": "Regra de três",
+  "title": "Calculadora de regra de três",
+  "short": "Resolva regra de três simples. Se A está para B, então C está para X.",
+  "fields": [
+   "A",
+   "B",
+   "C"
+  ],
+  "formula": "X = (B × C) ÷ A",
+  "example": "2 kg custam R$ 10. Quanto custam 5 kg? X = (10 × 5) ÷ 2 = R$ 25.",
+  "ex": [
+   "2",
+   "10",
+   "5"
+  ]
+ }
+]

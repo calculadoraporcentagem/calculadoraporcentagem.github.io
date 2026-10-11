@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+{{ partial "head.html" . }}
+</head>
+<body>
+{{ partial "navbar.html" . }}
+<main class="wrap">
+{{ block "main" . }}{{ end }}
+</main>
+{{ partial "footer.html" . }}
+{{ $js := resources.Get "js/calc.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+{{ with site.Params.adsense }}
+<script>
+(function(){var d=0;function go(){if(d)return;d=1;var s=document.createElement('script');s.async=true;s.crossOrigin='anonymous';s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}';s.onload=function(){document.querySelectorAll('ins.adsbygoogle').forEach(function(){(window.adsbygoogle=window.adsbygoogle||[]).push({})})};document.head.appendChild(s)}
+['scroll','pointerdown','keydown'].forEach(function(e){addEventListener(e,go,{once:true,passive:true})});setTimeout(go,4000)})();
+</script>
+{{ end }}
+</body>
+</html>

@@ -1,0 +1,9 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+<h1>{{ .Title }}</h1>
+<p class="lead">{{ .Description }}</p>
+<article class="prose">{{ .Content }}</article>
+{{ with .Params.related_calc }}{{ with site.GetPage (print "/calculadoras/" .) }}<p>Calculadora relacionada: <a href="{{ .RelPermalink }}">{{ .Title }}</a></p>{{ end }}{{ end }}
+{{ with .Params.related }}<section><h2>Termos relacionados</h2><ul>{{ range . }}{{ with site.GetPage (print "/glossario/" .) }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}{{ end }}</ul></section>{{ end }}
+<p><a href="{{ "glossario/" | relURL }}">Ver todos os termos</a></p>
+{{ end }}

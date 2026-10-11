@@ -1,0 +1,13 @@
+# {{ site.Title }}
+
+> {{ site.Params.description }}
+
+## Calculadoras
+{{ range hugo.Data.calculators }}- [{{ .menu }}]({{ print "calculadoras/" .slug "/" | absURL }}): {{ .short }}
+{{ end }}
+## Glossário
+- [Glossário de porcentagem]({{ "glossario/" | absURL }}): definições de termos como ponto percentual, por mil e regra de três.
+
+## Guias
+{{ range (site.GetPage "/guias").Pages.ByWeight }}- [{{ .Title }}]({{ .Permalink }}): {{ .Description }}
+{{ end }}

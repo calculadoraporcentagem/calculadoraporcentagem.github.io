@@ -1,0 +1,22 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+{{ $p := . }}{{ $c := dict }}
+{{ range hugo.Data.calculators }}{{ if eq .id $p.Params.calc }}{{ $c = . }}{{ end }}{{ end }}
+<h1>{{ .Title }}</h1>
+<p class="lead">{{ .Description }}</p>
+{{ partial "calculator.html" (dict "c" $c) }}
+{{ partial "ad.html" "a" }}
+<article class="prose">
+<h2>Como calcular</h2>
+<p><strong>Fórmula:</strong> {{ $c.formula }}</p>
+<p><strong>Exemplo:</strong> {{ $c.example }}</p>
+{{ .Content }}
+</article>
+{{ partial "ad.html" "b" }}
+{{ partial "faq.html" . }}
+<section><h2>Outras calculadoras</h2>
+<ul class="cards">
+{{ range hugo.Data.calculators }}{{ if ne .id $p.Params.calc }}<li><a href="{{ print "calculadoras/" .slug "/" | relURL }}"><strong>{{ .menu }}</strong><span>{{ .short }}</span></a></li>{{ end }}{{ end }}
+</ul></section>
+<p class="upd">Atualizado em {{ .Lastmod.Format "02/01/2006" }}</p>
+{{ end }}

@@ -1,0 +1,20 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+<h1>{{ .Title }}</h1>
+<p class="lead">{{ .Description }}</p>
+{{ $s := newScratch }}
+{{ range .Pages.ByTitle }}{{ $s.Add (upper (substr .Title 0 1)) (slice .) }}{{ end }}
+{{ $az := split "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z" " " }}
+<nav class="az" aria-label="Índice alfabético de termos">
+{{ range $l := $az }}{{ if $s.Get $l }}<a href="#letra-{{ $l }}" aria-label="Termos com a letra {{ $l }}">{{ $l }}</a>{{ else }}<span aria-hidden="true">{{ $l }}</span>{{ end }}{{ end }}
+</nav>
+{{ range $l := $az }}{{ with $s.Get $l }}
+<section class="letter" id="letra-{{ $l }}">
+<h2>{{ $l }}</h2>
+<ul class="terms">
+{{ range . }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a><span>{{ .Description }}</span></li>{{ end }}
+</ul>
+</section>
+{{ end }}{{ end }}
+<div class="prose">{{ .Content }}</div>
+{{ end }}

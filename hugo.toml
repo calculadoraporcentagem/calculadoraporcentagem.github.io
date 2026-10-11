@@ -1,0 +1,38 @@
+baseURL = "https://calculadoraporcentagem.github.io/"
+locale = "pt-BR"
+defaultContentLanguage = "pt-br"
+title = "Calculadora de Porcentagem"
+enableRobotsTXT = true
+enableGitInfo = false
+disableKinds = ["taxonomy", "term", "RSS"]
+
+[frontmatter]
+  lastmod = ["lastmod", "date", ":fileModTime"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+[mediaTypes."text/plain"]
+  suffixes = ["txt"]
+
+[outputFormats.llms]
+  mediaType = "text/plain"
+  baseName = "llms"
+  isPlainText = true
+  notAlternative = true
+
+[outputs]
+  home = ["HTML", "llms"]
+
+[params]
+  description = "Calculadoras de porcentagem online com passo a passo: desconto, aumento, variação, margem de lucro e regra de três."
+  # Preencha para ativar anúncios (ex.: "ca-pub-0000000000000000") e os slots abaixo
+  adsense = ""
+  [params.adslots]
+    a = ""
+    b = ""
+    c = ""

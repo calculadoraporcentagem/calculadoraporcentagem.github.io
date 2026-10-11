@@ -1,0 +1,24 @@
+<footer class="foot">
+    <div class="wrap">
+        <div class="fcols">
+            <div>
+                <p class="fh">Calculadoras</p>
+                <ul>
+                    {{ range hugo.Data.calculators }}<li><a href="{{ print "calculadoras/" .slug "/" | relURL }}">{{ .menu }}</a></li>{{ end }}
+                </ul>
+            </div>
+            <div>
+                <p class="fh">Recursos</p>
+                <ul>
+                    <li><a href="{{ "guias/" | relURL }}">Guias</a></li>
+                    <li><a href="{{ "glossario/" | relURL }}">Glossário</a></li>
+                    <li><a href="{{ "sobre/" | relURL }}">Sobre</a></li>
+                    <li><a href="{{ "privacidade/" | relURL }}">Privacidade</a></li>
+                    <li><a href="{{ "contato/" | relURL }}">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="fine">© {{ now.Year }} Calculadora de Porcentagem. Os resultados são informativos e não substituem
+            orientação profissional.</p>
+    </div>
+</footer>

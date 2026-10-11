@@ -1,0 +1,5 @@
+{{ with site.Params.adsense }}
+<aside class="ad" aria-label="Publicidade"><span>Publicidade</span>
+<ins class="adsbygoogle" style="display:block" data-ad-client="{{ . }}" data-ad-slot="{{ index site.Params.adslots $ }}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</aside>
+{{ end }}

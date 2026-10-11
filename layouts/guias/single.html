@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+<h1>{{ .Title }}</h1>
+<p class="lead">{{ .Description }}</p>
+{{ partial "ad.html" "a" }}
+<article class="prose">{{ .Content }}</article>
+{{ partial "ad.html" "b" }}
+{{ partial "faq.html" . }}
+{{ with .Params.related_calcs }}<section><h2>Calculadoras relacionadas</h2><ul class="cards">
+{{ range . }}{{ with site.GetPage (print "/calculadoras/" .) }}<li><a href="{{ .RelPermalink }}"><strong>{{ .Params.short | default .Title }}</strong><span>{{ .Description }}</span></a></li>{{ end }}{{ end }}
+</ul></section>{{ end }}
+{{ with .Params.related_terms }}<section><h2>Termos do glossário</h2><ul>
+{{ range . }}{{ with site.GetPage (print "/glossario/" .) }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a>: {{ .Description }}</li>{{ end }}{{ end }}
+</ul></section>{{ end }}
+<p class="upd">Atualizado em {{ .Lastmod.Format "02/01/2006" }}</p>
+{{ end }}

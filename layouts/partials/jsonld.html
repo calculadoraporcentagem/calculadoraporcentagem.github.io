@@ -1,0 +1,38 @@
+{{ $site := site.Home.Permalink }}
+{{ $org := dict "@type" "Organization" "@id" (print $site "#org") "name" site.Title "url" $site }}
+{{ $web := dict "@type" "WebSite" "@id" (print $site "#website") "url" $site "name" site.Title "inLanguage" "pt-BR" "publisher" (dict "@id" (print $site "#org")) }}
+{{ $graph := slice $org $web }}
+{{ $mod := .Lastmod.Format "2006-01-02" }}
+{{ if not .IsHome }}
+  {{ $items := slice }}
+  {{ range $i, $a := .Ancestors.Reverse }}
+    {{ $items = $items | append (dict "@type" "ListItem" "position" (add $i 1) "name" $a.Title "item" $a.Permalink) }}
+  {{ end }}
+  {{ $items = $items | append (dict "@type" "ListItem" "position" (add (len .Ancestors) 1) "name" .Title "item" .Permalink) }}
+  {{ $graph = $graph | append (dict "@type" "BreadcrumbList" "itemListElement" $items) }}
+{{ end }}
+{{ if .IsHome }}
+  {{ $graph = $graph | append (dict "@type" "WebApplication" "name" site.Title "url" .Permalink "applicationCategory" "UtilitiesApplication" "operatingSystem" "Any" "inLanguage" "pt-BR" "description" .Description "offers" (dict "@type" "Offer" "price" "0" "priceCurrency" "BRL")) }}
+{{ else if and .IsPage (eq .Section "calculadoras") }}
+  {{ $graph = $graph | append (dict "@type" "WebApplication" "name" .Title "url" .Permalink "applicationCategory" "UtilitiesApplication" "operatingSystem" "Any" "inLanguage" "pt-BR" "description" .Description "dateModified" $mod "offers" (dict "@type" "Offer" "price" "0" "priceCurrency" "BRL")) }}
+{{ else if and .IsPage (eq .Section "glossario") }}
+  {{ $set := dict "@type" "DefinedTermSet" "name" "Glossário de porcentagem" "url" (absURL "glossario/") }}
+  {{ $graph = $graph | append (dict "@type" "DefinedTerm" "name" .Title "description" .Description "url" .Permalink "inLanguage" "pt-BR" "inDefinedTermSet" $set) }}
+{{ else if and .IsPage (eq .Section "guias") }}
+  {{ $graph = $graph | append (dict "@type" "Article" "headline" .Title "description" .Description "url" .Permalink "inLanguage" "pt-BR" "datePublished" (.Date.Format "2006-01-02") "dateModified" $mod "author" (dict "@id" (print $site "#org")) "publisher" (dict "@id" (print $site "#org"))) }}
+{{ else if .IsSection }}
+  {{ $list := slice }}
+  {{ range $i, $p := .Pages }}{{ $list = $list | append (dict "@type" "ListItem" "position" (add $i 1) "url" $p.Permalink "name" $p.Title) }}{{ end }}
+  {{ $graph = $graph | append (dict "@type" "CollectionPage" "name" .Title "url" .Permalink "inLanguage" "pt-BR" "mainEntity" (dict "@type" "ItemList" "itemListElement" $list)) }}
+  {{ if eq .Section "glossario" }}
+    {{ $terms := slice }}
+    {{ range .Pages.ByTitle }}{{ $terms = $terms | append (dict "@type" "DefinedTerm" "name" .Title "url" .Permalink) }}{{ end }}
+    {{ $graph = $graph | append (dict "@type" "DefinedTermSet" "name" "Glossário de porcentagem" "url" .Permalink "inLanguage" "pt-BR" "hasDefinedTerm" $terms) }}
+  {{ end }}
+{{ end }}
+{{ with .Params.faq }}
+  {{ $q := slice }}
+  {{ range . }}{{ $q = $q | append (dict "@type" "Question" "name" .q "acceptedAnswer" (dict "@type" "Answer" "text" .a)) }}{{ end }}
+  {{ $graph = $graph | append (dict "@type" "FAQPage" "mainEntity" $q) }}
+{{ end }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify | safeJS }}</script>
