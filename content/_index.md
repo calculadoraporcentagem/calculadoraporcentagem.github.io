@@ -94,8 +94,3 @@ Os resultados exibem a fórmula usada e cada etapa do cálculo, para que você e
 Conteúdo elaborado com base em:
 
 - Artigo [Percentage](https://en.wikipedia.org/wiki/Percentage) da Wikipedia (CC BY-SA).
-- [Glossário do Cidadão](https://www.bcb.gov.br/estabilidadefinanceira/glossariocidadao) do Banco Central do Brasil.[^bcb]
-- [Glossário de conceitos estatísticos](https://www.ibge.gov.br/acervo/glossario.html) do IBGE.[^ibge]
-
-[^bcb]: Banco Central do Brasil. *Glossário do Cidadão*. Disponível em: https://www.bcb.gov.br/estabilidadefinanceira/glossariocidadao
-[^ibge]: Instituto Brasileiro de Geografia e Estatística. *Glossário*. Disponível em: https://www.ibge.gov.br/acervo/glossario.html
