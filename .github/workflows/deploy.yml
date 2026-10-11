@@ -27,7 +27,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.147.9   # ganti jika ingin versi lain
+      HUGO_VERSION: 0.167.0   # Hugo Extended terbaru (Oktober 2026)
     steps:
       - name: Install Hugo CLI
         run: |
@@ -36,21 +36,20 @@ jobs:
           sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7    # v7 → Node.js 24 native
         with:
-          submodules: recursive   # ambil theme sebagai submodule jika ada
-          fetch-depth: 0          # dibutuhkan jika enableGitInfo = true
+          submodules: recursive      # ambil theme sebagai submodule jika ada
+          fetch-depth: 0             # dibutuhkan jika enableGitInfo = true
 
       - name: Setup GitHub Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v5   # sudah di-force Node 24 oleh runner
 
       - name: Build with Hugo
         env:
-          # https://gohugo.io/troubleshooting/build-performance/#hugo-env
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
-          TZ: America/Sao_Paulo   # timezone sesuai target audiens (Brasil)
+          TZ: America/Sao_Paulo      # timezone sesuai target audiens (Brasil)
         run: |
           hugo \
             --minify \
